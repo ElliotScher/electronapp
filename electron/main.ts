@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 import path from 'node:path'
 
 // The built directory structure
@@ -24,7 +24,7 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
-    fullscreen: true
+    fullscreen: false
   })
 
   // Test active push message to Renderer-process.
@@ -39,6 +39,10 @@ function createWindow() {
     win.loadFile(path.join(process.env.DIST, 'index.html'))
   }
 }
+
+ipcMain.handle('test', async (_event, args) => {
+  return await args
+})
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
