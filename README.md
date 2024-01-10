@@ -42,7 +42,3 @@ To start the development server and Electron app concurrently, run:
 ```bash
 npm run dev
 ```
-
-## License
-
-This project is licensed under the [MIT License](LICENSE.md). Feel free to use and modify it as needed for your projects.
